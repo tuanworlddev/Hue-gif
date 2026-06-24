@@ -92,7 +92,7 @@ export const Checkout: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 py-16 text-center font-sans">
         <AlertCircle className="w-12 h-12 text-[#B88A55] mx-auto mb-4 shrink-0" />
         <h3 className="font-serif font-semibold text-lg">Giỏ quà trống rỗng</h3>
-        <p className="text-xs text-text-muted mt-2">Vui lòng chọn ít nhất dột món quà lưu niệm Huế trước khi tới thanh toán ạ.</p>
+        <p className="text-xs text-text-muted mt-2">Vui lòng chọn ít nhất một món quà lưu niệm Huế trước khi tới thanh toán ạ.</p>
         <button onClick={() => navigateTo('shop')} className="mt-6 bg-[#6E4B67] text-white text-xs uppercase font-bold py-2 px-6 rounded-lg cursor-pointer">
           Trở lại coi cửa hàng
         </button>
@@ -248,10 +248,10 @@ export const Checkout: React.FC = () => {
 
       <div className="border-b border-zinc-200 pb-4 mb-8">
         <h2 className="text-3xl font-serif font-semibold text-text-charcoal tracking-tight">
-          Giao Biên Lai Đơn Quà
+          Hóa đơn đơn hàng
         </h2>
         <p className="text-xs text-text-muted mt-1 leading-relaxed max-w-xl font-light">
-          Hãy hoàn thành nốt dột vài nét về hòm thư nơi bạn hữu trú ngụ, để bưu tá giao duyên tới tận thềm hiên nhà.
+          Hãy hoàn thành địa chỉ, để bưu tá giao duyên tới tận thềm nhà bạn.
         </p>
       </div>
 
@@ -264,7 +264,7 @@ export const Checkout: React.FC = () => {
           <div className="bg-white border border-zinc-200 p-6 rounded-2xl shadow-xs space-y-4">
             <h3 className="text-xs font-bold uppercase text-brand-purple tracking-widest flex items-center gap-1.5 border-b border-zinc-100 pb-3">
               <span className="bg-brand-purple text-white w-4 h-4 rounded-full flex items-center justify-center text-[9px]">1</span>
-              <span>Thông tin lữ chủ thưa nhận quà</span>
+              <span>Thông tin của khách hàng nhận hàng</span>
             </h3>
 
             {/* Split row Name & Phone */}
@@ -305,7 +305,7 @@ export const Checkout: React.FC = () => {
             {/* Email */}
             <div>
               <label className="text-[10px] uppercase font-bold tracking-wider text-text-charcoal block mb-1">
-                Địa bạ hòm thư Email (Không ép)
+                Địa bạ hòm thư Email
               </label>
               <input
                 type="email"
@@ -569,7 +569,7 @@ export const Checkout: React.FC = () => {
 
                 <div className="p-3 bg-brand-purple/5 rounded-xl text-[10px] text-text-muted flex items-start gap-2.5 border border-brand-purple/10">
                   <AlertCircle className="w-3.5 h-3.5 text-brand-purple shrink-0 mt-0.5" />
-                  <p className="leading-relaxed">Đơn hàng bọc quà sẽ được tạm giữ dưới trạng thái <strong>Chờ thanh toán (pending_payment)</strong> sau khi quý khách xác nhận. Bưu cụ chỉ giao khi nhận đủ thanh toán hóa đơn.</p>
+                  <p className="leading-relaxed">Đơn hàng sẽ được tạm giữ dưới trạng thái <strong>Chờ thanh toán (pending_payment)</strong> sau khi quý khách xác nhận. Bưu cụ chỉ giao khi nhận đủ thanh toán hóa đơn.</p>
                 </div>
               </div>
             )}
