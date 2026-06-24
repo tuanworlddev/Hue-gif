@@ -88,13 +88,13 @@ export const Account: React.FC = () => {
     setEditWard(backupDemo.ward);
     setEditAddress(backupDemo.addressDetail);
     
-    addToast("Chào đón Tôn Nữ ghé thăm bạ sách gỗ!", "success");
+    addToast("Chào đón Tôn Nữ ghé thăm !", "success");
   };
 
   const handleSaveProfile = (e: React.FormEvent) => {
     e.preventDefault();
     if (!editName.trim()) {
-      addToast("Tên người nhận không được để cá trống.", "error");
+      addToast("Tên người nhận không được để trống.", "error");
       return;
     }
     updateUserProfile({
@@ -106,7 +106,7 @@ export const Account: React.FC = () => {
       ward: editWard,
       addressDetail: editAddress
     });
-    addToast("Đã lưu bạ thông tin sổ vận chuyển thành công!", "success");
+    addToast("Đã lưu  thông tin vận chuyển thành công!", "success");
   };
 
   // Recently viewed items list
@@ -125,7 +125,7 @@ export const Account: React.FC = () => {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 pb-16 font-sans">
       
       {/* Breadcrumb */}
-      <Breadcrumb items={[{ label: 'Tài khoản lữ khách' }]} />
+      <Breadcrumb items={[{ label: 'Tài khoản Khách Hàng' }]} />
 
       {/* GATE 1: IF NOT AUTHORIZED */}
       {!user ? (
@@ -133,7 +133,7 @@ export const Account: React.FC = () => {
           <div className="text-center space-y-2">
             <User className="w-12 h-12 text-[#B88A55] mx-auto mb-1 shrink-0 bg-brand-gold-light/50 p-2.5 rounded-full" />
             <h2 className="text-2xl font-serif font-semibold text-text-charcoal tracking-tight">
-              {isRegister ? 'Tạo tài khoản Huế' : 'Đăng nhập tài khoản Huế'}
+              {isRegister ? 'Tạo tài khoản Huegifts' : 'Đăng nhập tài khoản Huegifts'}
             </h2>
             <p className="text-xs text-text-muted leading-relaxed font-light font-sans max-w-xs mx-auto">
               {isRegister
@@ -265,7 +265,7 @@ export const Account: React.FC = () => {
           {/* Quick interactive demologin action shortcut */}
           <div className="border-t border-zinc-150 pt-4 text-center space-y-3">
             <p className="text-[10px] text-text-muted font-sans font-light">
-              Hoặc dùng nhanh tài khoản lữ hữu danh vọng soạn sẵn của Huegifts để thử nghiệm tức khắc:
+              Hoặc dùng nhanh tài khoản  sẵn của Huegifts để thử nghiệm tức khắc:
             </p>
             <button
               onClick={handleQuickDemoLogin}
@@ -287,10 +287,10 @@ export const Account: React.FC = () => {
           <div className="border-b border-zinc-300 pb-5 flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div>
               <h2 className="text-2xl font-serif font-semibold text-text-charcoal leading-none">
-                Xin chào hữu lữ, <span className="text-brand-purple italic">{user.fullName || user.name}</span>
+                Xin chào quý khách, <span className="text-brand-purple italic">{user.fullName || user.name}</span>
               </h2>
               <p className="text-xs text-text-muted mt-1 leading-relaxed font-light">
-                Ghé thăm bạ gỗ nhà vườn Huế. Thảnh thơi điều chỉnh thông tin gửi bưu hoặc ngắm lại dấu chân hành tinh xưa.
+                Ghé thăm cửa hàng Huegifts. Thảnh thơi điều chỉnh thông tin gửi bưu hoặc ngắm lại dấu chân hành tinh xưa.
               </p>
             </div>
 
@@ -300,7 +300,7 @@ export const Account: React.FC = () => {
               id="logout-main-btn"
             >
               <LogOut className="w-3.5 h-3.5" />
-              <span>Đóng bọc đăng xuất</span>
+              <span>Đăng xuất</span>
             </button>
           </div>
 
@@ -310,7 +310,7 @@ export const Account: React.FC = () => {
             <div className="lg:col-span-7 bg-white border border-zinc-200 p-6 rounded-2xl shadow-xs space-y-5">
               <h3 className="text-xs font-bold uppercase text-brand-purple tracking-widest flex items-center gap-1.5 border-b border-zinc-100 pb-3">
                 <MapPin className="w-4 h-4 text-brand-purple shrink-0" />
-                <span>Sổ địa bạ nhận bưu phẩm mặc định</span>
+                <span> Địa chỉ nhận bưu phẩm mặc định</span>
               </h3>
 
               <form onSubmit={handleSaveProfile} className="space-y-4">
@@ -399,7 +399,7 @@ export const Account: React.FC = () => {
                   id="profile-save-submit-btn"
                 >
                   <Save className="w-4 h-4 shrink-0" />
-                  <span>Cập nhật sổ bảo bạ</span>
+                  <span>Cập nhật thông tin</span>
                 </button>
               </form>
             </div>
@@ -408,7 +408,7 @@ export const Account: React.FC = () => {
             <div className="lg:col-span-12 xl:col-span-5 bg-white border border-zinc-250 p-6 rounded-2xl shadow-sm space-y-5 font-sans">
               <h3 className="text-xs font-bold uppercase text-brand-purple tracking-widest flex items-center gap-1.5 border-b border-zinc-100 pb-3">
                 <Box className="w-4 h-4 text-brand-purple shrink-0" />
-                <span>Bẹp ghi biên bạ đã gởi kính</span>
+                <span> Hóa đơn đã ghi nhận</span>
               </h3>
 
               {userOrders.length > 0 ? (
@@ -422,12 +422,12 @@ export const Account: React.FC = () => {
                       <div className="flex items-center justify-between">
                         <span className="font-bold text-xs text-text-charcoal bg-white border px-2 py-0.5 rounded shadow-xs">{ord.id}</span>
                         <span className="text-[10px] text-brand-gold font-semibold uppercase tracking-wider">
-                          ❀ {ord.status === 'confirmed' ? 'Mộc sấy măng chuẩn bị' : 'Đang di chuyển'}
+                          ❀ {ord.status === 'confirmed' ? 'Đang chuẩn bị' : 'Đang di chuyển'}
                         </span>
                       </div>
 
                       <div className="text-[11px] text-text-muted space-y-1">
-                        <p>• Ngày gởi: {new Date(ord.createdAt).toLocaleDateString('vi-VN')}</p>
+                        <p>• Ngày gửi: {new Date(ord.createdAt).toLocaleDateString('vi-VN')}</p>
                         <p>• Trị giá sớ quà: <span className="font-semibold text-[#6E4B67]">{formatPrice(ord.total)}</span></p>
                         <p className="truncate">• Gửi ngỏ: {ord.addressDetail}, {ord.ward}</p>
                       </div>
@@ -463,7 +463,7 @@ export const Account: React.FC = () => {
             <section className="border-t border-zinc-200 pt-10">
               <h3 className="font-serif font-medium text-lg text-text-charcoal tracking-tight mb-6 flex items-center gap-1.5">
                 <Eye className="w-4 h-4 text-brand-purple shrink-0 animate-pulse" />
-                <span>Những món quà Huế hữu lữ mới ghé ngó qua</span>
+                <span>Những món quà mà quý khách đã xem qua </span>
               </h3>
 
               <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
