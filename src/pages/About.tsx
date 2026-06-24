@@ -52,7 +52,7 @@ export const About: React.FC = () => {
 
           <div className="space-y-4 text-xs text-text-charcoal/85 leading-relaxed font-light">
             <p>
-              Đối với người lữ khách ghé thăm cố đô, Huế luôn hiện rõ dưới bóng dừa lòa xòa, dưới tà áo tím dập dìu qua làn sương mịt cồn Hến, hay hương kẹo mứt nồng cay râm ran góc bếp lò than ngày đông sụt sùi mưa dột. Nhưng làm sao gói gắm những thi vị của gió sông Hương ấy vác bọc trong vali mang theo về thềm nhà thị thành náo nhiệt?
+              Đối với người quý khách ghé thăm cố đô, Huế luôn hiện rõ dưới bóng dừa lòa xòa, dưới tà áo tím dập dìu qua làn sương mịt cồn Hến, hay hương kẹo mứt nồng cay râm ran góc bếp lò than ngày đông sụt sùi mưa dột. Nhưng làm sao gói gắm những thi vị của gió sông Hương ấy vác bọc trong vali mang theo về thềm nhà thị thành náo nhiệt?
             </p>
             
             <p>
@@ -64,7 +64,7 @@ export const About: React.FC = () => {
             </blockquote>
 
             <p>
-              Bằng việc sắm bọc từng món quà lưu niệm tại Huegifts, bạn không chỉ rước duyên nét cổ mộc mạc lãng mạng về hiên gỗ nhà, mà còn đóng góp trực tiếp dưỡng nuôi nguồn tài lực giúp 4 làng nghề thêu dệt nón tre cổ xứ Huế giữ gìn ngọn lửa nung lò dột sương lộng lẫy hằng thế kỷ.
+              Bằng việc sắm  từng món quà lưu niệm tại Huegifts, bạn không chỉ rước duyên nét cổ mộc mạc lãng mạng về hiên gỗ nhà, mà còn đóng góp trực tiếp dưỡng nuôi nguồn tài lực giúp 4 làng nghề thêu dệt nón tre cổ xứ Huế giữ gìn ngọn lửa nung lò dột sương lộng lẫy hằng thế kỷ.
             </p>
           </div>
         </div>
@@ -134,7 +134,7 @@ export const About: React.FC = () => {
           className="bg-brand-purple hover:bg-[#54344E] text-white py-3 px-8 rounded-lg text-xs font-bold uppercase tracking-widest cursor-pointer transition-colors shadow"
           id="about-to-shop-btn"
         >
-          Ghé dạo coi cửa hàng quà Huế
+          Ghé dạo coi cửa hàng Huegifts
         </button>
       </section>
 
