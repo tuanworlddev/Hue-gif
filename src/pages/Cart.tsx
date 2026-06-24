@@ -62,7 +62,7 @@ export const Cart: React.FC = () => {
                 <div className="text-xs">
                   {isFreeShip ? (
                     <p className="font-semibold text-[#5C452F]">
-                      Chúc mừng bạn! Biên lai của bạn đã đạt điều kiện miễn phí vận chuyển tiêu chuẩn 30.000 ₫ toàn quốc! ❀
+                      Chúc mừng bạn! Đơn hàng của bạn đã đạt điều kiện miễn phí vận chuyển tiêu chuẩn 30.000 ₫ toàn quốc! ❀
                     </p>
                   ) : (
                     <p className="font-light text-[#5C452F]/90">
@@ -247,7 +247,7 @@ export const Cart: React.FC = () => {
                 </button>
               </div>
               <p className="text-[9px] text-brand-gold italic">
-                * Nhập mã <b>HUEGIFTS10</b> đặc cách được chiết khấu 10% trực tiếp dột sương!
+                * Nhập mã <b>HUEGIFTS10</b> đặc cách được chiết khấu 10% trực tiếp!
               </p>
             </form>
 
@@ -271,7 +271,7 @@ export const Cart: React.FC = () => {
             Giỏ quà chưa gởi gắm gì
           </h3>
           <p className="text-xs text-text-muted leading-relaxed font-light mb-6 max-w-sm mx-auto">
-            Hòm kẹo mứt trà sen dột sương của bạn chưa có gì bày gửi cả. Ghé qua danh sách quà Huế thêu tay để dệt gửi yêu mến ngọt dịu nhé lữ khách hữu ái.
+            Giỏ hàng của bạn chưa có sản phẩm nào. Ghé qua cửa hàng để mua sắm nhé.
           </p>
           <button
             onClick={() => navigateTo('shop')}
@@ -279,7 +279,7 @@ export const Cart: React.FC = () => {
             id="cart-empty-back-shop-btn"
           >
             <ArrowLeft className="w-4 h-4 shrink-0" />
-            <span>Xách bọc coi mâm quà</span>
+            <span>Xem cửa hàng</span>
           </button>
         </div>
       )}
