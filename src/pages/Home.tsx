@@ -89,7 +89,7 @@ export const Home: React.FC = () => {
           <span className="text-brand-gold text-xs uppercase font-semibold tracking-widest mb-4 bg-white/10 px-3 py-1 rounded-full backdrop-blur-sm">
             ❀ Huegifts — Thương hiệu Quà lưu niệm & Văn hóa Cố Đô
           </span>
-          <h2 className="text-3xl sm:text-5xl md:text-6xl font-serif font-medium text-amber-50 leading-tight tracking-tight mb-5 shadow-sm">
+          <h2 className="text-3xl sm:text-5xl md:text-6xl font-serif font-medium text-amber-50 leading-tight tracking-tight mb-5 shadow-sm whitespace-nowrap">
             Mang một miền thương về nhà
           </h2>
           <p className="text-sm md:text-base text-amber-50/90 leading-relaxed font-light mb-8 max-w-xl shadow-xs">
