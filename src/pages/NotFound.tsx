@@ -14,10 +14,10 @@ export const NotFound: React.FC = () => {
         
         <div className="space-y-2">
           <h2 className="font-serif font-semibold text-text-charcoal text-xl md:text-2xl tracking-tight leading-none">
-            Lối cũ trầm rêu phủ...
+            Huegifts...
           </h2>
           <p className="text-xs text-text-muted leading-relaxed font-light max-w-sm mx-auto font-sans">
-            Lữ khách ghé chân nhầm ngách kiệt vắng hương trà rồi ạ. Địa giới liên kết bưu tín này hiện thời chưa hiển bạ nơi bưu cục Huegifts mẫu.
+            Chúng tôi kể câu chuyện về Huế qua những món quà nhỏ. Mỗi sản phẩm không chỉ đẹp và ý nghĩa mà còn mang theo một mảnh ký ức, một nét văn hóa, hay một câu chuyện đặc biệt của vùng đất cố đô. Mong rằng khi trao đi món quà ấy, bạn cũng đang trao đi một phần hồn Huế.
           </p>
         </div>
 
@@ -31,7 +31,7 @@ export const NotFound: React.FC = () => {
             id="notfound-back-home"
           >
             <Landmark className="w-4 h-4 shrink-0" />
-            <span>Về thềm nhà gỗ</span>
+            <span>Về Trang chủ </span>
           </button>
           
           <button
@@ -39,7 +39,7 @@ export const NotFound: React.FC = () => {
             className="w-full sm:w-auto bg-white hover:bg-zinc-100 text-text-charcoal border border-zinc-250 text-xs font-semibold tracking-wider py-2.5 px-6 rounded-lg cursor-pointer transition-all"
             id="notfound-back-shop"
           >
-            Ghé mâm quà
+            Cửa hàng
           </button>
         </div>
 
