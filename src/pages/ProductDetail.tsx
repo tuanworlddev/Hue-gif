@@ -160,22 +160,31 @@ export const ProductDetail: React.FC = () => {
               {product.name}
             </h1>
 
-            {/* Ratings & reviews index */}
+            {/* Ratings & reviews index — dùng số liệu đánh giá thật */}
             <div className="flex items-center space-x-3.5 border-b border-zinc-200/50 pb-4">
-              <div className="flex items-center text-brand-gold">
-                {[...Array(5)].map((_, i) => (
-                  <Star
-                    key={i}
-                    className={`w-4 h-4 shrink-0 ${
-                      i < Math.floor(product.rating) ? 'fill-current' : 'text-zinc-300'
-                    }`}
-                  />
-                ))}
-                <span className="text-xs font-semibold font-sans text-text-charcoal ml-1.5">{product.rating}</span>
-              </div>
-              <span className="text-xs text-text-muted">|</span>
-              <span className="text-xs text-text-muted">({product.reviewCount} lượt bạn hữu dột sương hồi âm lại)</span>
-              <span className="text-xs text-text-muted">|</span>
+              {summary.count > 0 ? (
+                <>
+                  <div className="flex items-center text-brand-gold">
+                    {[...Array(5)].map((_, i) => (
+                      <Star
+                        key={i}
+                        className={`w-4 h-4 shrink-0 ${
+                          i < Math.floor(summary.average) ? 'fill-current' : 'text-zinc-300'
+                        }`}
+                      />
+                    ))}
+                    <span className="text-xs font-semibold font-sans text-text-charcoal ml-1.5">{summary.average.toFixed(1)}</span>
+                  </div>
+                  <span className="text-xs text-text-muted">|</span>
+                  <span className="text-xs text-text-muted">({summary.count} lượt bạn hữu dột sương hồi âm lại)</span>
+                  <span className="text-xs text-text-muted">|</span>
+                </>
+              ) : (
+                <>
+                  <span className="text-xs text-text-muted/70 italic">Chưa có đánh giá</span>
+                  <span className="text-xs text-text-muted">|</span>
+                </>
+              )}
               <span className={`text-[11px] font-bold ${product.stock > 0 ? 'text-brand-green' : 'text-red-500'}`}>
                 {product.stock > 0 ? `Sẵn bưu cục (${product.stock} món)` : 'Tạm hết mẫu'}
               </span>

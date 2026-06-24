@@ -83,11 +83,17 @@ export const ProductQuickView: React.FC = () => {
 
             {/* Ratings & status */}
             <div className="flex items-center space-x-3 mb-4">
-              <span className="flex items-center text-brand-gold">
-                <Star className="w-4 h-4 fill-current shrink-0" />
-                <span className="text-xs font-semibold ml-1">{product.rating}</span>
-              </span>
-              <span className="text-xs text-text-muted">({product.reviewCount} lượt khách đánh giá)</span>
+              {product.reviewCount > 0 ? (
+                <>
+                  <span className="flex items-center text-brand-gold">
+                    <Star className="w-4 h-4 fill-current shrink-0" />
+                    <span className="text-xs font-semibold ml-1">{product.rating}</span>
+                  </span>
+                  <span className="text-xs text-text-muted">({product.reviewCount} lượt khách đánh giá)</span>
+                </>
+              ) : (
+                <span className="text-xs text-text-muted/70 italic">Chưa có đánh giá</span>
+              )}
               <span className="text-xs text-gray-300">|</span>
               <span className={`text-[11px] font-semibold tracking-wide ${product.stock > 0 ? 'text-brand-green' : 'text-red-500'}`}>
                 {product.stock > 0 ? `Còn hàng (Sẵn ${product.stock})` : 'Hết hàng'}

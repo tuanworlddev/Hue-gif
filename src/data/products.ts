@@ -16,8 +16,8 @@ export const PRODUCTS: Product[] = [
       "https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=650&q=80",
       "https://images.unsplash.com/photo-1543157148-f68f214f1129?auto=format&fit=crop&w=650&q=80"
     ],
-    rating: 4.9,
-    reviewCount: 42,
+    rating: 0,
+    reviewCount: 0,
     stock: 25,
     tags: ["đồ thủ công", "nón lá", "văn hóa", "dễ mang đi"],
     isFeatured: true,
@@ -44,8 +44,8 @@ export const PRODUCTS: Product[] = [
       "https://images.unsplash.com/photo-1597481499750-3e6b22637e12?auto=format&fit=crop&w=650&q=80",
       "https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&w=650&q=80"
     ],
-    rating: 5.0,
-    reviewCount: 56,
+    rating: 0,
+    reviewCount: 0,
     stock: 12,
     tags: ["đặc sản", "trà sen", "sang trọng"],
     isFeatured: true,
@@ -70,8 +70,8 @@ export const PRODUCTS: Product[] = [
     images: [
       "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=650&q=80"
     ],
-    rating: 4.8,
-    reviewCount: 19,
+    rating: 0,
+    reviewCount: 0,
     stock: 100,
     tags: ["postcard", "quà lưu niệm nhỏ", "văn phòng phẩm", "bán chạy", "dễ mang đi"],
     isFeatured: false,
@@ -97,8 +97,8 @@ export const PRODUCTS: Product[] = [
     images: [
       "https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=650&q=80"
     ],
-    rating: 4.7,
-    reviewCount: 33,
+    rating: 0,
+    reviewCount: 0,
     stock: 45,
     tags: ["túi tote", "thời trang", "thêu tay"],
     isFeatured: true,
@@ -123,8 +123,8 @@ export const PRODUCTS: Product[] = [
     images: [
       "https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=650&q=80"
     ],
-    rating: 4.9,
-    reviewCount: 88,
+    rating: 0,
+    reviewCount: 0,
     stock: 120,
     tags: ["bookmark", "quà nhỏ", "đồng đúc", "văn hóa", "dễ mang đi"],
     isFeatured: false,
@@ -150,8 +150,8 @@ export const PRODUCTS: Product[] = [
     images: [
       "https://images.unsplash.com/photo-1582139329536-e7284fece509?auto=format&fit=crop&w=650&q=80"
     ],
-    rating: 4.6,
-    reviewCount: 27,
+    rating: 0,
+    reviewCount: 0,
     stock: 40,
     tags: ["móc khóa", "pháp lam", "mỹ nghệ"],
     isFeatured: false,
@@ -177,8 +177,8 @@ export const PRODUCTS: Product[] = [
     images: [
       "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=650&q=80"
     ],
-    rating: 4.9,
-    reviewCount: 22,
+    rating: 0,
+    reviewCount: 0,
     stock: 15,
     tags: ["tranh", "sơn mài", "trường tiền", "thủ công"],
     isFeatured: true,
@@ -204,8 +204,8 @@ export const PRODUCTS: Product[] = [
     images: [
       "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=650&q=80"
     ],
-    rating: 5.0,
-    reviewCount: 94,
+    rating: 0,
+    reviewCount: 0,
     stock: 35,
     tags: ["ẩm thực", "set quà", "đặc sản", "bán chạy"],
     isFeatured: true,
@@ -230,8 +230,8 @@ export const PRODUCTS: Product[] = [
     images: [
       "https://images.unsplash.com/photo-1586040140378-b5634cb4c8fc?auto=format&fit=crop&w=650&q=80"
     ],
-    rating: 4.8,
-    reviewCount: 110,
+    rating: 0,
+    reviewCount: 0,
     stock: 80,
     tags: ["đặc sản", "mè xửng", "đồ ngọt", "dễ mang đi"],
     isFeatured: false,
@@ -257,8 +257,8 @@ export const PRODUCTS: Product[] = [
     images: [
       "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&w=650&q=80"
     ],
-    rating: 4.9,
-    reviewCount: 38,
+    rating: 0,
+    reviewCount: 0,
     stock: 50,
     tags: ["tinh dầu", "vĩ dạ", "thảo mộc", "dễ mang đi"],
     isFeatured: false,
@@ -283,8 +283,8 @@ export const PRODUCTS: Product[] = [
     images: [
       "https://images.unsplash.com/photo-1531346878377-a5be20888e57?auto=format&fit=crop&w=650&q=80"
     ],
-    rating: 4.8,
-    reviewCount: 31,
+    rating: 0,
+    reviewCount: 0,
     stock: 50,
     tags: ["sổ tay", "lưu niệm văn phòng", "vải thêu", "dễ mang đi"],
     isFeatured: false,
@@ -310,8 +310,8 @@ export const PRODUCTS: Product[] = [
     images: [
       "https://images.unsplash.com/photo-1612196808214-b8e1d6145a8c?auto=format&fit=crop&w=650&q=80"
     ],
-    rating: 4.9,
-    reviewCount: 45,
+    rating: 0,
+    reviewCount: 0,
     stock: 20,
     tags: ["gốm sứ", "ly mộc", "thủ công", "sen tịnh tâm"],
     isFeatured: true,
@@ -337,8 +337,8 @@ export const PRODUCTS: Product[] = [
     images: [
       "https://images.unsplash.com/photo-1601924994987-69e26d50dc26?auto=format&fit=crop&w=650&q=80"
     ],
-    rating: 5.0,
-    reviewCount: 18,
+    rating: 0,
+    reviewCount: 0,
     stock: 12,
     tags: ["khăn lụa", "lụa tơ tằm", "áo dài tím", "sang trọng"],
     isFeatured: true,
@@ -363,8 +363,8 @@ export const PRODUCTS: Product[] = [
     images: [
       "https://images.unsplash.com/photo-1572375995501-4b0894dbe154?auto=format&fit=crop&w=650&q=80"
     ],
-    rating: 4.7,
-    reviewCount: 40,
+    rating: 0,
+    reviewCount: 0,
     stock: 150,
     tags: ["sticker", "văn phòng phẩm", "dễ thương", "quà tặng nhỏ", "dễ mang đi"],
     isFeatured: false,
@@ -390,8 +390,8 @@ export const PRODUCTS: Product[] = [
     images: [
       "https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=650&q=80"
     ],
-    rating: 5.0,
-    reviewCount: 15,
+    rating: 0,
+    reviewCount: 0,
     stock: 8,
     tags: ["doanh nghiệp", "hộp quà gỗ", "sang trọng"],
     isFeatured: true,
@@ -417,8 +417,8 @@ export const PRODUCTS: Product[] = [
     images: [
       "https://images.unsplash.com/photo-1517842645767-c639042777db?auto=format&fit=crop&w=650&q=80"
     ],
-    rating: 4.9,
-    reviewCount: 18,
+    rating: 0,
+    reviewCount: 0,
     stock: 15,
     tags: ["đèn lồng", "trang trí", "lụa huế", "mỹ nghệ"],
     isFeatured: false,

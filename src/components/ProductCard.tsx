@@ -121,12 +121,18 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           </h3>
 
           {/* Ratings */}
-          <div className="flex items-center space-x-1 mb-2">
-            <span className="flex items-center text-brand-gold">
-              <Star className="w-3 h-3 fill-current shrink-0" />
-              <span className="text-xs font-semibold font-sans ml-0.5">{product.rating}</span>
-            </span>
-            <span className="text-[11px] text-text-muted">({product.reviewCount} đánh giá)</span>
+          <div className="flex items-center space-x-1 mb-2 min-h-[18px]">
+            {product.reviewCount > 0 ? (
+              <>
+                <span className="flex items-center text-brand-gold">
+                  <Star className="w-3 h-3 fill-current shrink-0" />
+                  <span className="text-xs font-semibold font-sans ml-0.5">{product.rating}</span>
+                </span>
+                <span className="text-[11px] text-text-muted">({product.reviewCount} đánh giá)</span>
+              </>
+            ) : (
+              <span className="text-[11px] text-text-muted/70 italic">Chưa có đánh giá</span>
+            )}
           </div>
 
           {/* Description Snippet */}
