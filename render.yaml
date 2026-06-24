@@ -1,0 +1,42 @@
+# Render Blueprint cho Huegifts (server Express + Vite + Postgres Neon)
+# Tạo service: Render Dashboard → New → Blueprint → chọn repo tuanworlddev/Hue-gif
+# Các biến đánh dấu sync:false sẽ được Render hỏi để bạn nhập (không lưu trong repo).
+services:
+  - type: web
+    name: huegifts
+    runtime: node
+    plan: free
+    # --include=dev để cài vite/esbuild/tsx (devDependencies) phục vụ build,
+    # kể cả khi NODE_ENV=production.
+    buildCommand: npm install --include=dev && npm run build
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: APP_URL          # vd: https://huegifts.onrender.com (đúng domain Render cấp)
+        sync: false
+      - key: DATABASE_URL     # chuỗi kết nối Neon Postgres
+        sync: false
+      - key: SMTP_USER
+        sync: false
+      - key: SMTP_PASS        # Gmail App Password
+        sync: false
+      - key: MAIL_TO
+        sync: false
+      - key: ADMIN_EMAIL
+        sync: false
+      - key: ADMIN_SESSION_TOKEN
+        sync: false
+      - key: VNPAY_URL
+        value: https://sandbox.vnpayment.vn/paymentv2/vpcpay.html
+      - key: VNPAY_TMN_CODE   # U2SEUAC3
+        sync: false
+      - key: VNPAY_HASH_SECRET
+        sync: false
+      - key: OPENROUTER_API_KEY   # dùng khóa MỚI sau khi xoay
+        sync: false
+      - key: OPENROUTER_URL
+        value: https://openrouter.ai/api/v1/chat/completions
+      - key: CHAT_MODEL
+        value: gpt-3.5-turbo
