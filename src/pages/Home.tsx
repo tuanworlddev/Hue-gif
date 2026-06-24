@@ -173,7 +173,7 @@ export const Home: React.FC = () => {
             className="text-brand-purple hover:text-brand-purple/80 text-xs font-semibold tracking-wider font-sans uppercase mt-2 md:mt-0 flex items-center space-x-1 cursor-pointer"
             id="see-all-products-link"
           >
-            <span>Bàn giao ngắm cửa hàng</span>
+            <span> Đi đến cửa hàng</span>
             <ArrowRight className="w-3.5 h-3.5" />
           </button>
         </div>
@@ -208,7 +208,7 @@ export const Home: React.FC = () => {
               ✿ Sứ mệnh của chúng tôi
             </span>
             <h3 className="font-serif font-medium text-3xl md:text-4xl text-text-charcoal leading-tight tracking-tight mb-5">
-              Mỗi món quà đều mang theo một câu chuyện dài...
+              Mỗi món quà đều mang theo một câu chuyện...
             </h3>
             
             <p className="text-xs text-text-muted leading-relaxed font-light mb-4">
