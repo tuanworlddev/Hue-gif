@@ -252,7 +252,7 @@ export const AdminDashboard: React.FC = () => {
           setSelectedOrder(prev => prev ? { ...prev, status: newStatus as any } : null);
         }
       } else {
-        addToast('Lỗi thay đổi trạng thái đơn bọc.', 'error');
+        addToast('Lỗi thay đổi trạng thái đơn.', 'error');
       }
     } catch (e) {
       addToast('Không thể tương tác bưu cục.', 'error');
@@ -281,7 +281,7 @@ export const AdminDashboard: React.FC = () => {
   };
 
   const handleDeleteContact = async (contactId: string) => {
-    if (!window.confirm("Lữ hữu quản trị có thực tâm muốn xóa vĩnh viễn bức tâm tư này của lữ khách?")) return;
+    if (!window.confirm(" Bạn có muốn xóa bức thư này của khách hàng không?")) return;
     try {
       const res = await fetch(`/api/admin/contacts/${contactId}`, {
         method: 'DELETE',
@@ -290,7 +290,7 @@ export const AdminDashboard: React.FC = () => {
         }
       });
       if (res.ok) {
-        addToast('Xóa bức thơ liên hệ thành công.', 'success');
+        addToast('Xóa bức thư liên hệ thành công.', 'success');
         fetchContacts();
         fetchStats();
       }
