@@ -102,7 +102,7 @@ export const Home: React.FC = () => {
               className="bg-[#6E4B67] hover:bg-[#54344E] text-white py-3 px-8 rounded-lg text-xs font-semibold uppercase tracking-wider transition-colors cursor-pointer"
               id="hero-shop-cta"
             >
-              Khám phá quà Huế
+              Khám phá Huegifts
             </button>
             <button
               onClick={() => navigateTo('stories')}
@@ -217,7 +217,7 @@ export const Home: React.FC = () => {
             
             <div className="quote-decorative mb-6 my-4 pl-4 border-l-2 border-brand-gold">
               <p className="text-sm font-serif italic text-text-charcoal font-light leading-relaxed">
-                “Huegifts không bán sản vật trơn tuột. Chúng tôi gửi trao chiếc hòm gỗ đan sáp chứa ký ức sương khói của cố cung thơ mộng, đắp đổi vẹn nguyên mộc mạc của quê hương gửi người ly xứ.”
+                “Huegifts không bán sản vật trơn tuột. Chúng tôi gửi trao chiếc hòm gỗ đan sáp chứa ký ức của cố cung thơ mộng, đắp đổi vẹn nguyên mộc mạc của quê hương gửi người ly xứ.”
               </p>
             </div>
 
