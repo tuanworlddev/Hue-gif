@@ -52,7 +52,7 @@ export const ContactFAQ: React.FC = () => {
       const data = await response.json();
 
       if (response.ok) {
-        addToast(data.message || "Gửi thư thành công! Huegifts đã nhận được thông điệp từ lữ hữu. ❀", "success");
+        addToast(data.message || "Gửi thư thành công! Huegifts đã nhận được thông điệp từ quý khách. ❀", "success");
         setFormData({
           name: '',
           email: '',
@@ -102,7 +102,7 @@ export const ContactFAQ: React.FC = () => {
             </h3>
 
             <p className="text-xs text-text-muted leading-relaxed font-light font-sans">
-              Chúng tôi luôn khói lửa sấy trà mộc thêu gồi lá sen mở rộng hiên nhà gỗ chào đón bạn ghé thưởng trà đan nón bài thơ:
+              Trà mộc, nón bài thơ và nghề thủ công Huế – một không gian nhà gỗ yên bình mời bạn ghé thưởng trà và cảm nhận tinh hoa xứ Huế:
             </p>
 
             <div className="space-y-4 pt-3 text-xs text-text-charcoal font-sans">
@@ -118,7 +118,7 @@ export const ContactFAQ: React.FC = () => {
                 <Phone className="w-4 h-4 text-brand-purple mt-0.5 shrink-0" />
                 <div>
                   <p className="font-semibold text-text-charcoal">Đường dây nóng liên hệ:</p>
-                  <p className="font-light text-text-muted leading-relaxed mt-0.5">0977047908 (Zalo thủ công trà sen)</p>
+                  <p className="font-light text-text-muted leading-relaxed mt-0.5">0977047908 (Jb Huệ)</p>
                 </div>
               </div>
 
@@ -126,7 +126,7 @@ export const ContactFAQ: React.FC = () => {
                 <Mail className="w-4 h-4 text-brand-purple mt-0.5 shrink-0" />
                 <div>
                   <p className="font-semibold text-text-charcoal">Địa bạ hòm thư tín:</p>
-                  <p className="font-light text-text-muted leading-relaxed mt-0.5">nvanhue069@gmail.com (Hồi đáp trong tàn 1 buổi nhang gỗ)</p>
+                  <p className="font-light text-text-muted leading-relaxed mt-0.5">nvanhue069@gmail.com (Hồi đáp sớm nhất có thể)</p>
                 </div>
               </div>
             </div>
@@ -242,10 +242,10 @@ export const ContactFAQ: React.FC = () => {
         <div className="text-center max-w-xl mx-auto space-y-2 mb-10">
           <HelpCircle className="w-10 h-10 text-brand-gold mx-auto shrink-0 bg-brand-gold-light/40 p-2 rounded-full" />
           <h3 className="font-serif font-semibold text-text-charcoal text-xl leading-none">
-            Những băn khoăn tế vi bạn lữ thường vấn
+            Những băn khoăn của bạn
           </h3>
           <p className="text-xs text-text-muted leading-relaxed font-light font-sans max-w-md mx-auto">
-            Huegifts dột sương hồi đáp sẵn 6 câu thắc thỏm bấy lâu nay khi quý khách thỉnh mua sản vật mộc mạc:
+            Huegifts sẵn sàng hồi đáp khi quý khách cần:
           </p>
         </div>
 
