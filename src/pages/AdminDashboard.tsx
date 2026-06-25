@@ -32,6 +32,48 @@ import {
 } from 'lucide-react';
 import { Product, Order, PublicUserAccount } from '../types';
 
+/**
+ * Đọc 1 file ảnh, thu nhỏ (cạnh dài tối đa maxSize px) và nén JPEG trước khi
+ * chuyển sang base64. Mục đích: tránh nhồi ảnh gốc vài MB vào database (gây 502
+ * khi tải danh sách sản phẩm + đốt quota Neon). Mỗi ảnh sau nén chỉ còn ~50-150KB.
+ * Nếu trình duyệt không xử lý được (vd SVG/lỗi) thì fallback về base64 gốc.
+ */
+function compressImageFile(file: File, maxSize = 1000, quality = 0.8): Promise<string> {
+  return new Promise((resolve) => {
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      const dataUrl = reader.result as string;
+      const img = new Image();
+      img.onload = () => {
+        let { width, height } = img;
+        if (width > maxSize || height > maxSize) {
+          if (width >= height) {
+            height = Math.round((height * maxSize) / width);
+            width = maxSize;
+          } else {
+            width = Math.round((width * maxSize) / height);
+            height = maxSize;
+          }
+        }
+        const canvas = document.createElement('canvas');
+        canvas.width = width;
+        canvas.height = height;
+        const ctx = canvas.getContext('2d');
+        if (!ctx) return resolve(dataUrl);
+        ctx.drawImage(img, 0, 0, width, height);
+        try {
+          resolve(canvas.toDataURL('image/jpeg', quality));
+        } catch {
+          resolve(dataUrl);
+        }
+      };
+      img.onerror = () => resolve(dataUrl);
+      img.src = dataUrl;
+    };
+    reader.readAsDataURL(file);
+  });
+}
+
 interface DashboardStats {
   totalProducts: number;
   totalOrders: number;
@@ -2100,16 +2142,13 @@ export const AdminDashboard: React.FC = () => {
                           onChange={(e) => {
                             const files = e.target.files;
                             if (!files) return;
-                            Array.from(files).forEach((file: any) => {
-                              const reader = new FileReader();
-                              reader.onloadend = () => {
-                                const base64 = reader.result as string;
+                            Array.from(files).forEach((file: File) => {
+                              compressImageFile(file).then((base64) => {
                                 setProductForm(p => ({
                                   ...p,
                                   images: [...(p.images || []), base64]
                                 }));
-                              };
-                              reader.readAsDataURL(file);
+                              });
                             });
                           }}
                           className="w-full bg-[#0F0D0C] border border-white/10 rounded-xl px-2 py-1.5 text-zinc-400 text-[10px] file:mr-2 file:py-1 file:px-2.5 file:rounded-md file:border-0 file:text-[9px] file:font-semibold file:bg-[#6E4B67] file:text-white file:cursor-pointer hover:file:bg-[#54344E]"
@@ -2406,12 +2445,9 @@ export const AdminDashboard: React.FC = () => {
                           onChange={(e) => {
                             const files = e.target.files;
                             if (!files || files.length === 0) return;
-                            const reader = new FileReader();
-                            reader.onloadend = () => {
-                              const base64 = reader.result as string;
+                            compressImageFile(files[0]).then((base64) => {
                               setStoryForm(s => ({ ...s, image: base64 }));
-                            };
-                            reader.readAsDataURL(files[0]);
+                            });
                           }}
                           className="w-full bg-[#0F0D0C] border border-white/10 rounded-xl px-2 py-1.5 text-zinc-400 text-[10px] file:mr-2 file:py-1 file:px-2.5 file:rounded-md file:border-0 file:text-[9px] file:font-semibold file:bg-[#6E4B67] file:text-white file:cursor-pointer hover:file:bg-[#54344E]"
                         />
