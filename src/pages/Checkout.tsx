@@ -4,6 +4,35 @@ import { useApp } from '../context/AppContext';
 import { Breadcrumb } from '../components/Breadcrumb';
 import { VIETNAM_PROVINCES } from '../data/provinces';
 
+/** fetch có giới hạn thời gian (mặc định 8s) bằng AbortController. */
+async function fetchWithTimeout(url: string, opts: RequestInit = {}, ms = 8000): Promise<Response> {
+  const ctrl = new AbortController();
+  const t = setTimeout(() => ctrl.abort(), ms);
+  try {
+    return await fetch(url, { ...opts, signal: ctrl.signal });
+  } finally {
+    clearTimeout(t);
+  }
+}
+
+/**
+ * Render gói free "ngủ đông" sau ~15 phút → lần gọi đầu mất 30-60s để khởi động.
+ * Hàm này ping /api/health nhiều lần để ĐÁNH THỨC server trước khi đặt đơn, nhờ đó
+ * request tạo đơn (POST) chỉ chạy đúng 1 lần khi server đã tỉnh → không tạo đơn trùng.
+ * Trả về true nếu server đã phản hồi, false nếu vẫn không thức sau các lần thử.
+ */
+async function wakeServer(attempts = 6, onWaking?: () => void): Promise<boolean> {
+  for (let i = 0; i < attempts; i++) {
+    try {
+      const res = await fetchWithTimeout('/api/health', {}, 12000);
+      if (res.ok) return true;
+    } catch {
+      if (i === 0 && onWaking) onWaking(); // chỉ báo "đang khởi động" 1 lần
+    }
+  }
+  return false;
+}
+
 interface CheckoutForm {
   name: string;
   phone: string;
@@ -197,6 +226,16 @@ export const Checkout: React.FC = () => {
       giftMessage: form.giftMessage,
     };
 
+    // Đánh thức server (Render free ngủ đông) trước khi tạo đơn — tránh đơn trùng.
+    const awake = await wakeServer(6, () =>
+      addToast("Máy chủ đang khởi động, vui lòng đợi giây lát...", "info")
+    );
+    if (!awake) {
+      addToast("Máy chủ đang khởi động chậm. Vui lòng đợi ~30s rồi đặt lại ạ.", "error");
+      setSubmitting(false);
+      return;
+    }
+
     try {
       const res = await fetch("/api/orders", {
         method: "POST",
@@ -231,7 +270,7 @@ export const Checkout: React.FC = () => {
         addToast(errorData.error || "Máy chủ từ chối đơn hàng.", "error");
       }
     } catch {
-      addToast("Không thể kết nối máy chủ. Kiểm tra mạng.", "error");
+      addToast("Mất kết nối khi gửi đơn. Đơn có thể chưa được lưu — vui lòng kiểm tra mục 'Tra cứu đơn' hoặc thử lại sau giây lát.", "error");
     } finally {
       setSubmitting(false);
     }
