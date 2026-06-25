@@ -50,7 +50,10 @@ export async function sendMail(to: string, subject: string, html: string): Promi
     return { success: false, reason: "SMTP not configured" };
   }
   try {
-    const from = `"Huegifts ❀ Quà tặng Cố đô" <${process.env.SMTP_USER}>`;
+    // Địa chỉ người gửi nên là một SENDER ĐÃ XÁC MINH trong Brevo (để mail vào Inbox,
+    // không bị Spam). Ưu tiên MAIL_FROM; nếu không có thì fallback về SMTP_USER.
+    const fromAddr = process.env.MAIL_FROM || process.env.SMTP_USER;
+    const from = `"Huegifts ❀ Quà tặng Cố đô" <${fromAddr}>`;
     await transporter.sendMail({ from, to, subject, html });
     return { success: true };
   } catch (err: any) {
