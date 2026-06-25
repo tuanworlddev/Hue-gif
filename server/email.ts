@@ -8,9 +8,26 @@ function getTransporter() {
   const user = process.env.SMTP_USER;
   const pass = process.env.SMTP_PASS;
   if (!user || !pass) return null;
+
+  // Render gói free CHẶN cổng SMTP 25/465/587 -> Gmail không gửi được.
+  // Nếu khai báo SMTP_HOST (vd relay Brevo/SendGrid cổng 2525 — Render KHÔNG chặn)
+  // thì dùng host/port đó; nếu không có thì mặc định dùng Gmail (chạy tốt ở local).
+  const timeouts = { connectionTimeout: 10000, greetingTimeout: 8000, socketTimeout: 10000 };
+  const host = process.env.SMTP_HOST;
+  if (host) {
+    const port = parseInt(process.env.SMTP_PORT || "2525", 10);
+    return nodemailer.createTransport({
+      host,
+      port,
+      secure: port === 465, // 2525/587 dùng STARTTLS (secure:false)
+      auth: { user, pass },
+      ...timeouts,
+    });
+  }
   return nodemailer.createTransport({
     service: "gmail",
     auth: { user, pass },
+    ...timeouts,
   });
 }
 
