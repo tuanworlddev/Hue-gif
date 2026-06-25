@@ -3,7 +3,7 @@ import crypto from "crypto";
 import path from "path";
 import { createServer as createViteServer } from "vite";
 import dotenv from "dotenv";
-import { db, UserSessionRecord, initDb } from "./server/db";
+import { db, UserSessionRecord, initDb, pool } from "./server/db";
 import { createPaymentUrl, verifyReturnUrl, VNP_RESPONSE_CODES, VnpayReturnParams } from "./server/vnpay";
 import {
   sendMail,
@@ -15,6 +15,7 @@ import {
   buildAdminContactEmail,
   buildNewReviewAdminEmail,
   buildSellerReplyEmail,
+  verifyMail,
 } from "./server/email";
 import { Product, Order, PublicUserAccount, UserAccount, Review } from "./src/types";
 
@@ -144,12 +145,23 @@ async function startServer() {
   // ==================== HEALTH / DIAGNOSTIC ====================
   // Kiểm tra nhanh cấu hình deploy (chỉ trả về true/false, KHÔNG lộ giá trị bí mật).
   // Mở: https://<domain>/api/health
-  app.get("/api/health", (_req, res) => {
+  app.get("/api/health", async (req, res) => {
     const hasVnpay =
       !!process.env.VNPAY_TMN_CODE &&
       !!process.env.VNPAY_HASH_SECRET &&
       process.env.VNPAY_TMN_CODE !== "DEMOVNPA" &&
       process.env.VNPAY_HASH_SECRET !== "SECRETDEMO";
+
+    // ?verify=1 → kiểm tra THẬT: ping DB + đăng nhập Gmail SMTP (chậm hơn ~vài giây).
+    let live: any = undefined;
+    if (req.query.verify) {
+      const [dbRes, mailRes] = await Promise.all([
+        pool.query("SELECT 1").then(() => ({ ok: true })).catch((e: any) => ({ ok: false, reason: e.message })),
+        verifyMail(),
+      ]);
+      live = { database: dbRes, smtp: mailRes };
+    }
+
     res.json({
       ok: true,
       appUrl: process.env.APP_URL || null,
@@ -157,6 +169,7 @@ async function startServer() {
       vnpay: { configured: hasVnpay, returnUrl: `${(process.env.APP_URL || "").replace(/\/$/, "")}/api/vnpay/return` },
       ai: { configured: !!(process.env.OPENROUTER_API_KEY || process.env.OPENAI_API_KEY) },
       database: { configured: !!process.env.DATABASE_URL },
+      ...(live ? { live } : {}),
     });
   });
 

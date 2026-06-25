@@ -14,6 +14,18 @@ function getTransporter() {
   });
 }
 
+/** Kiểm tra THẬT việc đăng nhập Gmail SMTP (không gửi mail). Dùng để chẩn đoán. */
+export async function verifyMail(): Promise<{ ok: boolean; reason?: string }> {
+  const transporter = getTransporter();
+  if (!transporter) return { ok: false, reason: "SMTP_USER / SMTP_PASS chưa cấu hình" };
+  try {
+    await transporter.verify();
+    return { ok: true };
+  } catch (err: any) {
+    return { ok: false, reason: err.message };
+  }
+}
+
 export async function sendMail(to: string, subject: string, html: string): Promise<{ success: boolean; reason?: string }> {
   const transporter = getTransporter();
   if (!transporter) {
