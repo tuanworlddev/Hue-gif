@@ -152,14 +152,19 @@ async function startServer() {
       process.env.VNPAY_TMN_CODE !== "DEMOVNPA" &&
       process.env.VNPAY_HASH_SECRET !== "SECRETDEMO";
 
-    // ?verify=1 → kiểm tra THẬT: ping DB + đăng nhập Gmail SMTP (chậm hơn ~vài giây).
+    // ?verify=1 → kiểm tra THẬT: ping DB + đăng nhập SMTP (chậm hơn ~vài giây).
+    // ?sendtest=<email> → GỬI THẬT 1 mail tới <email> và trả về lỗi cụ thể (nếu có).
     let live: any = undefined;
-    if (req.query.verify) {
+    if (req.query.verify || req.query.sendtest) {
       const [dbRes, mailRes] = await Promise.all([
         pool.query("SELECT 1").then(() => ({ ok: true })).catch((e: any) => ({ ok: false, reason: e.message })),
         verifyMail(),
       ]);
-      live = { database: dbRes, smtp: mailRes };
+      live = { database: dbRes, smtp: mailRes, from: process.env.SMTP_USER || null };
+      if (req.query.sendtest) {
+        const to = String(req.query.sendtest);
+        live.sendtest = { to, ...(await sendMail(to, "Huegifts — Test gửi mail", "<p>Test gửi mail thật ❀</p>")) };
+      }
     }
 
     res.json({
